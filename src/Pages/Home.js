@@ -1,11 +1,21 @@
-import Card from "../Components/Card";
+import HomeCard from "../Components/HomeCard";
+import HomeNav from "../Components/HomeNav";
 
-function Home({ result }) {
-  console.log("first =>", result);
+function Home({ result, favorites, saveFavorites, fetchFavorites, setAdded, setAlreadyAdded, getNasaPictures }) {
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      <HomeNav getNasaPictures={getNasaPictures} />
       {result.map((item, i) => (
-        <Card {...item} key={i} />
+        <HomeCard
+          {...item}
+          key={i}
+          result={result}
+          favorites={favorites}
+          saveFavorites={saveFavorites}
+          fetchFavorites={fetchFavorites}
+          setAdded={setAdded}
+          setAlreadyAdded={setAlreadyAdded}
+        />
       ))}
     </div>
   );
